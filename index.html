@@ -2463,7 +2463,7 @@ function renderWorkout(){
     const progDay=progDayForDisplay(i);
     const d=PROG[progDay];
     const done=wkComp.includes(progDay),active=i===activeDay;
-    const btn=h("button",{style:{flexShrink:0,padding:"6px 11px",borderRadius:"20px",fontSize:"10px",fontWeight:active?700:400,letterSpacing:"1.2px",fontFamily:"'Space Mono',monospace",background:active?pc:"transparent",color:active?"#000":done?G:TXT,border:`1px solid ${active?pc:done?G+"88":BRD}`,cursor:"pointer"}},
+    const btn=h("button",{style:{flexShrink:0,padding:"6px 11px",borderRadius:"20px",fontSize:"10px",fontWeight:active?700:400,letterSpacing:"1.2px",fontFamily:"'Space Mono',monospace",background:active?pc:"transparent",color:active?SRF:done?G:TXT,border:`1px solid ${active?pc:done?G+"88":BRD}`,cursor:"pointer"}},
       [label]);
     btn.addEventListener("click",()=>{activeDay=i;openEx=-1;renderWorkout();});
     tabsEl.appendChild(btn);
@@ -2997,7 +2997,7 @@ function renderProgress(){
         const isToday=dateStr===td();
         const c=document.createElement("div");
         c.textContent=day;
-        c.style.cssText=`height:28px;display:flex;align-items:center;justify-content:center;border-radius:6px;font-size:12px;font-family:'Space Mono',monospace;background:${allDone?G:anyDone?G+"33":"transparent"};color:${allDone?"#000":isToday?G:TXT};border:${isToday?"1.5px solid "+G:"1px solid transparent"};font-weight:${allDone||isToday?700:400}`;
+        c.style.cssText=`height:28px;display:flex;align-items:center;justify-content:center;border-radius:6px;font-size:12px;font-family:'Space Mono',monospace;background:${allDone?GD:anyDone?G+"22":"transparent"};color:${allDone?G:isToday?G:TXT};border:${allDone?"1.5px solid "+G:isToday?"1.5px solid "+G:"1px solid transparent"};font-weight:${allDone||isToday?700:400}`;
         calGrid.appendChild(c);
       }
       calCard.appendChild(calGrid);
@@ -3595,7 +3595,7 @@ function renderSquatChallenge(wrap){
     PC_WEEK.forEach((d,i)=>{
       const active=pcActiveDayIdx===i;
       const btn=document.createElement("button");
-      btn.style.cssText=`flex-shrink:0;padding:6px 12px;border-radius:20px;font-size:11px;font-weight:${active?700:400};font-family:'Space Mono',monospace;cursor:pointer;border:1px solid ${active?viewPhase.color:d.type==="rest"?DIM:BRD};background:${active?viewPhase.color:"transparent"};color:${active?"#000":d.type==="rest"?DIM:TXT}`;
+      btn.style.cssText=`flex-shrink:0;padding:6px 12px;border-radius:20px;font-size:11px;font-weight:${active?700:400};font-family:'Space Mono',monospace;cursor:pointer;border:1px solid ${active?viewPhase.color:d.type==="rest"?DIM:BRD};background:${active?viewPhase.color:"transparent"};color:${active?SRF:d.type==="rest"?DIM:TXT}`;
       btn.textContent=d.label;
       btn.addEventListener("click",()=>{pcActiveDayIdx=i;savePCState();renderPrograms();});
       dayTabs.appendChild(btn);
